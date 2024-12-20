@@ -23,8 +23,10 @@ namespace RepairApp
         public int WorkerID { get; set; }
         public string FullName { get; set; }
         public string Specialization { get; set; }
+        public int Role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request> Request { get; set; }
+        public virtual Role Role1 { get; set; }
     }
 }

@@ -4,16 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc59c0cc1170434ea57de8b421b2f033" Name="Diagram1">
-        <EntityTypeShape EntityType="RepairRequestsDBModel.Client" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepairRequestsDBModel.Equipment" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepairRequestsDBModel.Request" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepairRequestsDBModel.RequestStatus" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepairRequestsDBModel.Worker" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+      <Diagram DiagramId="51714c9eac3143aca01a28bf4adf42f9" Name="Diagram1">
+        <EntityTypeShape EntityType="RepairRequestsDBModel.Client" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairRequestsDBModel.Equipment" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairRequestsDBModel.Request" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairRequestsDBModel.RequestStatus" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairRequestsDBModel.Role" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairRequestsDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairRequestsDBModel.Worker" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="RepairRequestsDBModel.FK__Request__ClientI__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="RepairRequestsDBModel.FK__Request__Equipme__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="RepairRequestsDBModel.FK__Request__StatusI__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="RepairRequestsDBModel.FK__Request__WorkerI__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairRequestsDBModel.FK_Worker_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

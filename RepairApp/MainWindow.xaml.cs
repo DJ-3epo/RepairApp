@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
+using RepairApp;
+using System.Data.Entity;
 
 namespace RepairApp
 {
@@ -14,42 +17,60 @@ namespace RepairApp
             LoadRequests();
         }
 
+        // Метод для загрузки заявок
         private void LoadRequests()
         {
-            var requests = _context.Request
-                .Include("Client")
-                .Include("Equipment")
-                .Include("RequestStatus")
-                .Include("Worker")
-                .ToList();
+            try
+            {
+                var requests = _context.Request
+                                      .Include(r => r.Client)
+                                      .Include(r => r.Equipment)
+                                      .Include(r => r.RequestStatus)
+                                      .ToList();
 
-            RequestsGrid.ItemsSource = requests;
+                RequestsDataGrid.ItemsSource = requests;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+            }
         }
 
-        private void AddRequest_Click(object sender, RoutedEventArgs e)
+        // Редактирование существующей заявки
+        private void EditRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            var addWindow = new AddRequestWindow(_context);
+            var selectedRequest = RequestsDataGrid.SelectedItem as Request;
+            if (selectedRequest != null)
+            {
+                var editWindow = new EditRequestWindow(selectedRequest.RequestID);
+                bool? result = editWindow.ShowDialog();
+
+                if (result == true)
+                {
+                    LoadRequests();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите запрос для редактирования.");
+            }
+        }
+
+        // Обновление списка запросов после добавления нового
+        private void AddRequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            var addWindow = new AddRequestWindow();
             addWindow.ShowDialog();
             LoadRequests();
         }
 
-        private void EditRequest_Click(object sender, RoutedEventArgs e)
+        private void ViewStatisticsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (RequestsGrid.SelectedItem is Request selectedRequest)
-            {
-                var editWindow = new EditRequestWindow(_context, selectedRequest);
-                editWindow.ShowDialog();
-                LoadRequests();
-            }
-            else
-            {
-                MessageBox.Show("Выберите заявку для редактирования.");
-            }
+            var statisticsWindow = new StatisticsWindow();
+            statisticsWindow.ShowDialog();
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            LoadRequests();
-        }
+        
+
     }
 }

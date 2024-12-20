@@ -29,6 +29,8 @@ namespace RepairApp
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<Request> Request { get; set; }
         public virtual DbSet<RequestStatus> RequestStatus { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
     }
 }

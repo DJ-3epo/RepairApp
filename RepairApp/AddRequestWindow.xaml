@@ -2,10 +2,62 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Добавить заявку" Height="400" Width="400">
-    <Grid>
-        <TextBox x:Name="FaultTypeText" ToolTip="Тип неисправности" Margin="10" />
-        <TextBox x:Name="ProblemDescriptionText" ToolTip="Описание проблемы" Margin="10,50,10,0"/>
-        <Button Content="Сохранить" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                Margin="10" Click="Save_Click"/>
+
+    <Window.Resources>
+        <!-- Стиль для шрифта -->
+        <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Monotype Corsiva"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Background" Value="#D2F1F0"/>
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Monotype Corsiva"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Background" Value="#D2F1F0"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Monotype Corsiva"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="#5EC6CD"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#FFFFFF" Margin="10">
+        <StackPanel Background="#D2F1F0">
+
+            <!-- Комбо-бокс для выбора оборудования -->
+            <ComboBox x:Name="EquipmentComboBox" ToolTip="Оборудование" Style="{StaticResource ComboBoxStyle}"
+                      DisplayMemberPath="Name" SelectedValuePath="EquipmentID"/>
+
+            <!-- Комбо-бокс для выбора клиента -->
+            <ComboBox x:Name="ClientComboBox" ToolTip="Клиент" Style="{StaticResource ComboBoxStyle}"
+                      DisplayMemberPath="FullName" SelectedValuePath="ClientID"/>
+
+            <!-- Комбо-бокс для выбора статуса заявки -->
+            <ComboBox x:Name="StatusComboBox" ToolTip="Статус заявки" Style="{StaticResource ComboBoxStyle}"
+                      DisplayMemberPath="StatusName" SelectedValuePath="StatusID"/>
+
+            <!-- Текстовое поле для ввода типа неисправности -->
+            <TextBox x:Name="FaultTypeText" ToolTip="Тип неисправности" Style="{StaticResource TextBoxStyle}"/>
+
+            <!-- Текстовое поле для ввода описания проблемы -->
+            <TextBox x:Name="ProblemDescriptionText" ToolTip="Описание проблемы" Style="{StaticResource TextBoxStyle}"/>
+
+            <!-- Комбо-бокс для выбора исполнителя -->
+            <ComboBox x:Name="WorkerComboBox" ToolTip="Исполнитель" Style="{StaticResource ComboBoxStyle}"
+                      DisplayMemberPath="FullName" SelectedValuePath="WorkerID"/>
+
+            <!-- Кнопка сохранения -->
+            <Button Content="Сохранить" HorizontalAlignment="Right" Style="{StaticResource ButtonStyle}" Click="Save_Click"/>
+
+        </StackPanel>
     </Grid>
 </Window>

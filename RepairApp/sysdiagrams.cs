@@ -12,22 +12,12 @@ namespace RepairApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Request
+    public partial class sysdiagrams
     {
-        public int RequestID { get; set; }
-        public System.DateTime RequestDate { get; set; }
-        public int EquipmentID { get; set; }
-        public int ClientID { get; set; }
-        public int StatusID { get; set; }
-        public string FaultType { get; set; }
-        public string ProblemDescription { get; set; }
-        public Nullable<int> WorkerID { get; set; }
-    
-        public virtual Client Client { get; set; }
-        public virtual Equipment Equipment { get; set; }
-        public virtual RequestStatus RequestStatus { get; set; }
-        public virtual Worker Worker { get; set; }
-
-
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
